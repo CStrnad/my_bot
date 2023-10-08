@@ -8,7 +8,7 @@
     <!-- <link name="base_link"></link> -->
     <xacro:include filename="robot_core.xacro" />
 
-
+    <xacro:include filename="gazebo_control.xacro" /> <!-- Need to remove later? //CJS-->
     <!-- <xacro:if value="$(arg use_ros2_control)">
         <xacro:include filename="ros2_control.xacro" />
     </xacro:if>

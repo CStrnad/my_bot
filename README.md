@@ -1,7 +1,11 @@
-## Robot Package Template
+# Final Project - ROS2 Applied to Mechatronics
 
-This is a GitHub template. You can make your own copy by clicking the green "Use this template" button.
+This package is inspired by Josh Newans articubot_one project, and it's original base code is derived from his [my_bot](https://github.com/joshnewans/my_bot) template repository.
 
-It is recommended that you keep the repo/package name the same, but if you do change it, ensure you do a "Find all" using your IDE (or the built-in GitHub IDE by hitting the `.` key) and rename all instances of `my_bot` to whatever your project's name is.
+The build of this project is also heavily inspired by Josh Newans [Making a Mobile Robot with ROS](https://articulatedrobotics.xyz/index.html) guides.
 
-Note that each directory currently has at least one file in it to ensure that git tracks the files (and, consequently, that a fresh clone has direcctories present for CMake to find). These example files can be removed if required (and the directories can be removed if `CMakeLists.txt` is adjusted accordingly).
+## TODO
+
+- Add explanation of project
+- Explain process flow
+- ...
