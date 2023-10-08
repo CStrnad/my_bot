@@ -1,0 +1,18 @@
+## Example Code
+version: "3"
+services:
+  ros2-humble-desktop-gui:
+    # image: my-app:latest
+    # image: ubuntu:latest
+    build: 
+      dockerfile: humble-desktop.Dockerfile
+    # build: 
+    #   context: app
+      
+
+    environment:
+      # - DISPLAY=${DISPLAY}
+      - DISPLAY=:0
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    network_mode: host

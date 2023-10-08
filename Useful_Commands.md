@@ -10,6 +10,8 @@ To initialize Gazebo Simulation via launch file:
 
 ros2 launch my_bot launch_sim.launch.py
 
+ros2 launch my_bot launch_sim.launch.py world:=./src/my_bot/worlds/sim.world
+
 ## Foxglove Studio
 
 To enable the rosbridge service, on the VM run:
