@@ -30,6 +30,7 @@ RUN echo "Setup Complete."
 
 COPY entrypoint.sh /entrypoint.sh
 COPY gazebo_entrypoint.sh /gazebo_entrypoint.sh
+COPY rsp_entrypoint.sh /rsp_entrypoint.sh
 ENTRYPOINT ["bash", "/entrypoint.sh"]
 
 

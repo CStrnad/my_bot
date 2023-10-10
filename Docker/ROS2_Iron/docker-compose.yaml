@@ -86,3 +86,21 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
     network_mode: host
     entrypoint: /gazebo_entrypoint.sh
+
+  # ros2-rsp:
+  #   build: 
+  #     dockerfile: iron.Dockerfile
+  #   # runtime: nvidia
+    
+  #   environment:
+  #     # - DISPLAY=${DISPLAY}
+  #     - DISPLAY=host.docker.internal:0
+  #     - LIBGL_ALWAYS_INDIRECT=0 
+  #     # - NVIDIA_VISIBLE_DEVICES: all
+  #     # - NVIDIA_DRIVER_CAPABILITIES: all
+
+  #   volumes:
+  #     - /tmp/.X11-unix:/tmp/.X11-unix
+  #   network_mode: host
+  #   # entrypoint: /rsp_entrypoint.sh
+  #   command: ros2 launch my_bot rsp.launch.py
