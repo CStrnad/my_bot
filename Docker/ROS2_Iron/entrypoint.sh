@@ -7,6 +7,7 @@ git pull
 source /opt/ros/iron/setup.bash
 cd ../..
 source install/local_setup.bash
+colcon build --symlink-install
 
 echo "Provided arguments: $@"
 

@@ -47,7 +47,7 @@ docker build -f .\iron.Dockerfile -t my_image .
 
 MANUAL WAY:
 Correct command, but make sure Moba is up and running or no GUI.
-docker run -it --net=host -e DISPLAY=host.docker.internal:0 -e LIBGL_ALWAYS_INDIRECT=0 -v /tmp/.X11-unix:/tmp/.X11-unix my_image rviz2
+docker run -it --net=host -e DISPLAY=host.docker.internal:0 -e LIBGL_ALWAYS_INDIRECT=0 -v /tmp/.X11-unix:/tmp/.X11-unix my_image bash
 
 Compose file way:
 
