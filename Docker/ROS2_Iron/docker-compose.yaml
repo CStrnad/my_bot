@@ -85,7 +85,8 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
     network_mode: host
-    entrypoint: /gazebo_entrypoint.sh
+    # entrypoint: /gazebo_entrypoint.sh
+    command: ros2 launch my_bot launch_sim.launch.py world:=./src/my_bot/worlds/sim.world
 
   # ros2-rsp:
   #   build: 
