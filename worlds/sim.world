@@ -87,10 +87,10 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
     <state world_name='default'>
-      <sim_time>57 695000000</sim_time>
-      <real_time>49 265916201</real_time>
-      <wall_time>1696981040 422789729</wall_time>
-      <iterations>46248</iterations>
+      <sim_time>92 88000000</sim_time>
+      <real_time>36 85223122</real_time>
+      <wall_time>1696981743 393430198</wall_time>
+      <iterations>34393</iterations>
       <model name='Perimeter'>
         <pose>1.5 -3e-06 0 0 -0 1.5708</pose>
         <scale>1 1 1</scale>
@@ -136,20 +136,20 @@
         </link>
       </model>
       <model name='unit_box'>
-        <pose>2.92467 2.82639 0.404122 1e-05 -0 0</pose>
+        <pose>2.92467 2.82614 0.400953 -0 -0 -0</pose>
         <scale>0.500578 0.489975 0.801907</scale>
         <link name='link'>
-          <pose>2.92467 2.82639 0.404122 1e-05 -0 0</pose>
+          <pose>2.92467 2.82614 0.400953 -0 -0 -0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-0.004709 -9.78112 9.78158 0.712677 -0.009414 -4.3e-05</acceleration>
-          <wrench>-0.004709 -9.78112 9.78158 0 -0 0</wrench>
+          <acceleration>-0 0 0 -0 -0 -0</acceleration>
+          <wrench>-0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='unit_sphere'>
-        <pose>1.668 2.7607 0.5 0 -0 0</pose>
+        <pose>1.668 2.7607 0.091665 0 -0 0</pose>
         <scale>0.18333 0.18333 0.18333</scale>
         <link name='link'>
-          <pose>1.668 2.7607 0.5 0 -0 0</pose>
+          <pose>1.668 2.7607 0.091665 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -666,7 +666,7 @@
     </model>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>-0.623057 -0.312513 5.65514 0 0.89532 0.681465</pose>
+        <pose>1.51041 0.072321 9.06225 3.14159 1.57079 3.14159</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
