@@ -4,8 +4,12 @@ This package is inspired by Josh Newans articubot_one project, and it's original
 
 The build of this project is also heavily inspired by Josh Newans [Making a Mobile Robot with ROS](https://articulatedrobotics.xyz/index.html) guides.
 
+## Notice
+
+You MUST have NVIDIA Docker set up with your docker configuration.
+
 ## TODO
 
 - Add explanation of project
 - Explain process flow
-- ...
+- Add NVIDIA Docker setup instructions.

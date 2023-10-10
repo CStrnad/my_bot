@@ -3,7 +3,7 @@ version: "3"
 services:
   ros2-docker:
     build: 
-      dockerfile: humble-test.Dockerfile
+      dockerfile: vnc.Dockerfile
     
     environment:
       # - DISPLAY=${DISPLAY}

@@ -1,14 +1,88 @@
 ## Example Code
 version: "3"
 services:
-  ros2-docker:
+  ros2-rviz2:
     build: 
       dockerfile: iron.Dockerfile
+    # runtime: nvidia
     
     environment:
       # - DISPLAY=${DISPLAY}
-      - DISPLAY=host.docker.internal:0.0
+      - DISPLAY=host.docker.internal:0
       - LIBGL_ALWAYS_INDIRECT=0 
+      # - NVIDIA_VISIBLE_DEVICES: all
+      # - NVIDIA_DRIVER_CAPABILITIES: all
+
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
     network_mode: host
+    command: rviz2
+
+
+  ros2-rqt:
+    build: 
+      dockerfile: iron.Dockerfile
+    # runtime: nvidia
+    
+    environment:
+      # - DISPLAY=${DISPLAY}
+      - DISPLAY=host.docker.internal:0
+      - LIBGL_ALWAYS_INDIRECT=0 
+      # - NVIDIA_VISIBLE_DEVICES: all
+      # - NVIDIA_DRIVER_CAPABILITIES: all
+
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    network_mode: host
+    command: ros2 run rqt_topic rqt_topic
+
+  ros2-talker:
+    build: 
+      dockerfile: iron.Dockerfile
+    # runtime: nvidia
+    
+    environment:
+      # - DISPLAY=${DISPLAY}
+      - DISPLAY=host.docker.internal:0
+      - LIBGL_ALWAYS_INDIRECT=0 
+      # - NVIDIA_VISIBLE_DEVICES: all
+      # - NVIDIA_DRIVER_CAPABILITIES: all
+
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    network_mode: host
+    command: ros2 run demo_nodes_cpp talker
+
+  ros2-listener:
+    build: 
+      dockerfile: iron.Dockerfile
+    # runtime: nvidia
+    
+    environment:
+      # - DISPLAY=${DISPLAY}
+      - DISPLAY=host.docker.internal:0
+      - LIBGL_ALWAYS_INDIRECT=0 
+      # - NVIDIA_VISIBLE_DEVICES: all
+      # - NVIDIA_DRIVER_CAPABILITIES: all
+
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    network_mode: host
+    command: ros2 run demo_nodes_py listener
+
+  ros2-gazebo:
+    build: 
+      dockerfile: iron.Dockerfile
+    # runtime: nvidia
+    
+    environment:
+      # - DISPLAY=${DISPLAY}
+      - DISPLAY=host.docker.internal:0
+      - LIBGL_ALWAYS_INDIRECT=0 
+      # - NVIDIA_VISIBLE_DEVICES: all
+      # - NVIDIA_DRIVER_CAPABILITIES: all
+
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    network_mode: host
+    entrypoint: /gazebo_entrypoint.sh

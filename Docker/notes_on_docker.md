@@ -39,3 +39,14 @@ docker run -it --name ros-humble-test -e DISPLAY=host.docker.internal:0.0 -e LIB
 Look at this later:
 https://www.youtube.com/watch?v=RbP5cARP-SM
 
+
+For Iron:
+
+To build the docker file:
+docker build -f .\iron.Dockerfile -t my_image .
+
+MANUAL WAY:
+Correct command, but make sure Moba is up and running or no GUI.
+docker run -it --net=host -e DISPLAY=host.docker.internal:0 -e LIBGL_ALWAYS_INDIRECT=0 -v /tmp/.X11-unix:/tmp/.X11-unix my_image rviz2
+
+Compose file way:
