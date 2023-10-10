@@ -42,6 +42,6 @@ def generate_launch_description():
     # Launch them all!
     return LaunchDescription([
         rsp,
-        # gazebo,
+        gazebo,
         spawn_entity,
     ])
