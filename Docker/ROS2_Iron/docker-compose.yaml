@@ -18,8 +18,7 @@ services:
     network_mode: host
     command: rviz2
 
-
-  # ros2-rqt:
+  # ros2-gazebo:
   #   build: 
   #     dockerfile: iron.Dockerfile
   #   # runtime: nvidia
@@ -34,74 +33,56 @@ services:
   #   volumes:
   #     - /tmp/.X11-unix:/tmp/.X11-unix
   #   network_mode: host
-  #   command: ros2 run rqt_topic rqt_topic
+  #   # entrypoint: /gazebo_entrypoint.sh
+  #   command: ros2 launch my_bot launch_sim.launch.py world:=./src/my_bot/worlds/sim.world
 
-  # ros2-talker:
-  #   build: 
-  #     dockerfile: iron.Dockerfile
-  #   # runtime: nvidia
-    
-  #   environment:
-  #     # - DISPLAY=${DISPLAY}
-  #     - DISPLAY=host.docker.internal:0
-  #     - LIBGL_ALWAYS_INDIRECT=0 
-  #     # - NVIDIA_VISIBLE_DEVICES: all
-  #     # - NVIDIA_DRIVER_CAPABILITIES: all
-
-  #   volumes:
-  #     - /tmp/.X11-unix:/tmp/.X11-unix
-  #   network_mode: host
-  #   command: ros2 run demo_nodes_cpp talker
-
-  # ros2-listener:
-  #   build: 
-  #     dockerfile: iron.Dockerfile
-  #   # runtime: nvidia
-    
-  #   environment:
-  #     # - DISPLAY=${DISPLAY}
-  #     - DISPLAY=host.docker.internal:0
-  #     - LIBGL_ALWAYS_INDIRECT=0 
-  #     # - NVIDIA_VISIBLE_DEVICES: all
-  #     # - NVIDIA_DRIVER_CAPABILITIES: all
-
-  #   volumes:
-  #     - /tmp/.X11-unix:/tmp/.X11-unix
-  #   network_mode: host
-  #   command: ros2 run demo_nodes_py listener
-
-  ros2-gazebo:
+  ros2-humble-twist-mux:
     build: 
-      dockerfile: iron.Dockerfile
-    # runtime: nvidia
-    
+      dockerfile: humble.Dockerfile
     environment:
-      # - DISPLAY=${DISPLAY}
       - DISPLAY=host.docker.internal:0
       - LIBGL_ALWAYS_INDIRECT=0 
-      # - NVIDIA_VISIBLE_DEVICES: all
-      # - NVIDIA_DRIVER_CAPABILITIES: all
-
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
     network_mode: host
-    # entrypoint: /gazebo_entrypoint.sh
+    command: ros2 run twist_mux twist_mux --ros-args --params-file ./src/my_bot/config/twist_mux.yaml -r cmd_vel_out:=diff_cont/cmd_vel_unstamped
+
+  ros2-humble-sim:
+    build: 
+      dockerfile: humble.Dockerfile
+    environment:
+      - DISPLAY=host.docker.internal:0
+      - LIBGL_ALWAYS_INDIRECT=0 
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    network_mode: host
     command: ros2 launch my_bot launch_sim.launch.py world:=./src/my_bot/worlds/sim.world
 
-  # ros2-rsp:
+  ros2-humble-rosbridge-foxglove:
+    build: 
+      dockerfile: humble.Dockerfile
+    environment:
+      - DISPLAY=host.docker.internal:0
+      - LIBGL_ALWAYS_INDIRECT=0 
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    ports: 
+      - "9090:9090"
+    command: ros2 launch rosbridge_server rosbridge_websocket_launch.xml
+
+  # ros2-humble-bash:
   #   build: 
-  #     dockerfile: iron.Dockerfile
-  #   # runtime: nvidia
-    
+  #     dockerfile: humble.Dockerfile
   #   environment:
-  #     # - DISPLAY=${DISPLAY}
   #     - DISPLAY=host.docker.internal:0
   #     - LIBGL_ALWAYS_INDIRECT=0 
-  #     # - NVIDIA_VISIBLE_DEVICES: all
-  #     # - NVIDIA_DRIVER_CAPABILITIES: all
-
   #   volumes:
   #     - /tmp/.X11-unix:/tmp/.X11-unix
   #   network_mode: host
-  #   # entrypoint: /rsp_entrypoint.sh
-  #   command: ros2 launch my_bot rsp.launch.py
+  #   command: bash
+
+    # Don't use this.
+    # docker run -it my_image bash
+
+# networks:
+#   some-network: {}

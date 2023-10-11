@@ -53,4 +53,4 @@ Compose file way:
 
 docker-compose up
 
-docker-compose down -rmi all
+docker-compose down --rmi all
