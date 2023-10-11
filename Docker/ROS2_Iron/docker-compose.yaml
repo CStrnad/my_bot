@@ -3,23 +3,6 @@ version: "3"
 services:
   ros2-rviz2:
     build: 
-      dockerfile: iron.Dockerfile
-    # runtime: nvidia
-    
-    environment:
-      # - DISPLAY=${DISPLAY}
-      - DISPLAY=host.docker.internal:0
-      - LIBGL_ALWAYS_INDIRECT=0 
-      # - NVIDIA_VISIBLE_DEVICES: all
-      # - NVIDIA_DRIVER_CAPABILITIES: all
-
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-    network_mode: host
-    command: rviz2 -d src/my_bot/config/rviz.rviz
-
-  ros2-humble-twist-mux:
-    build: 
       dockerfile: humble.Dockerfile
     environment:
       - DISPLAY=host.docker.internal:0
@@ -27,7 +10,18 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
     network_mode: host
-    command: ros2 run twist_mux twist_mux --ros-args --params-file ./src/my_bot/config/twist_mux.yaml -r cmd_vel_out:=diff_cont/cmd_vel_unstamped
+    command: rviz2 #-d src/my_bot/config/rviz.rviz
+
+  # ros2-humble-twist-mux:
+  #   build: 
+  #     dockerfile: humble.Dockerfile
+  #   environment:
+  #     - DISPLAY=host.docker.internal:0
+  #     - LIBGL_ALWAYS_INDIRECT=0 
+  #   volumes:
+  #     - /tmp/.X11-unix:/tmp/.X11-unix
+  #   network_mode: host
+  #   command: ros2 run twist_mux twist_mux --ros-args --params-file ./src/my_bot/config/twist_mux.yaml -r cmd_vel_out:=diff_cont/cmd_vel_unstamped
 
   ros2-humble-sim:
     build: 
@@ -39,55 +33,45 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
     network_mode: host
     command: ros2 launch my_bot launch_sim.launch.py world:=./src/my_bot/worlds/sim.world
-
-  ros2-humble-rosbridge-foxglove:
-    build: 
-      dockerfile: humble.Dockerfile
-    environment:
-      - DISPLAY=host.docker.internal:0
-      - LIBGL_ALWAYS_INDIRECT=0 
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-    ports: 
-      - "9090:9090"
-    command: ros2 launch rosbridge_server rosbridge_websocket_launch.xml
-
-  ros2-humble-nav2-navigation:
-    build: 
-      dockerfile: humble.Dockerfile
-    environment:
-      - DISPLAY=host.docker.internal:0
-      - LIBGL_ALWAYS_INDIRECT=0 
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-    network_mode: host
-    restart: unless-stopped
-    command: ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true map_subscribe_transient_local:=true
-
-  ros2-humble-nav2_localization:
-    build: 
-      dockerfile: humble.Dockerfile
-    environment:
-      - DISPLAY=host.docker.internal:0
-      - LIBGL_ALWAYS_INDIRECT=0 
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-    network_mode: host
-    restart: unless-stopped
-    command: ros2 launch nav2_bringup localization_launch.py map:=./src/my_bot/maps/my_map.yaml
-  # ros2-humble-bash:
+        
+  # ros2-humble-nav2-navigation:
   #   build: 
-  #     dockerfile: humble.Dockerfile
+  #     dockerfile: delay-humble.Dockerfile
   #   environment:
   #     - DISPLAY=host.docker.internal:0
   #     - LIBGL_ALWAYS_INDIRECT=0 
   #   volumes:
   #     - /tmp/.X11-unix:/tmp/.X11-unix
   #   network_mode: host
-  #   command: bash
+  #   restart: unless-stopped
+  #   command: ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true map_subscribe_transient_local:=true
 
-    # Don't use this.
-    # docker run -it my_image bash
+  ros2-humble-rqt:
+    build: 
+      dockerfile: humble.Dockerfile
+    environment:
+      - DISPLAY=host.docker.internal:0
+      - LIBGL_ALWAYS_INDIRECT=0 
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    network_mode: host
+    restart: unless-stopped
+    command: ros2 run rqt_topic rqt_topic
 
-# networks:
-#   some-network: {}
+  # ros2-humble-nav2_localization:
+  #   build: 
+  #     dockerfile: delay-humble.Dockerfile
+  #   environment:
+  #     - DISPLAY=host.docker.internal:0
+  #     - LIBGL_ALWAYS_INDIRECT=0 
+  #   volumes:
+  #     - /tmp/.X11-unix:/tmp/.X11-unix
+  #   network_mode: host
+  #   restart: unless-stopped
+  #   command: ros2 launch nav2_bringup localization_launch.py map:=./src/my_bot/maps/my_map.yaml
+
+  # ros2-humble-bash:
+  #   build: 
+  #     dockerfile: humble.Dockerfile
+  #   network_mode: host
+  #   command: ros2 topic list

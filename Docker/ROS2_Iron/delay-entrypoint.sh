@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd src/my_bot/
+git pull
+source /opt/ros/humble/setup.bash
+cd ../..
+source install/local_setup.bash
+colcon build --symlink-install
+sleep 15
+
+echo "Provided arguments: $@"
+
+exec $@
