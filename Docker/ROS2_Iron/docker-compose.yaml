@@ -16,7 +16,7 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
     network_mode: host
-    command: rviz2
+    command: rviz2 -d src/my_bot/config/rviz.rviz
 
   # ros2-gazebo:
   #   build: 
