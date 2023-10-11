@@ -25,5 +25,15 @@ SLAM Toolbox
 Online Asynchronous...
 ros2 launch slam_toolbox online_async_launch.py params_file:=./src/my_bot/config/mapper_params_online_async.yaml use_time_time:=true
 
+# Generate map and save it! Then change the config above to use mapping and reference the map file.
+
 Launch Nav2 bringup for control...
 ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true
+
+Enable Map Server
+ros2 run nav2_map_server map_server --ros-args -p yaml_filename:=my_map_save.yaml -p use_sim_time:=true
+ros2 run nav2_util lifecycle_bringup map_server
+
+Launch AMCL
+ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
+ros2 run nav2_util lifecycle_bringup amcl

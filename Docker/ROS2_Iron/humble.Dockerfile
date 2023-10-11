@@ -28,6 +28,7 @@ RUN sudo apt-get install ros-humble-slam-toolbox -y
 RUN sudo apt-get install ros-humble-navigation2 -y
 RUN sudo apt-get install ros-humble-nav2-bringup -y
 RUN sudo apt-get install ros-humble-twist-mux -y
+# RUN sudo apt-get install ros-humble-
 
 
 ENV DISPLAY=host.docker.internal:0.0
