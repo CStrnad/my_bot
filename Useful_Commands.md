@@ -37,3 +37,15 @@ ros2 run nav2_util lifecycle_bringup map_server
 Launch AMCL
 ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
 ros2 run nav2_util lifecycle_bringup amcl
+
+
+
+
+AMCL Way Actually!!!
+Launch Gazebo sim, and rviz as per usual.
+
+Launch  nav2 localization...
+ros2 launch nav2_bringup localization_launch.py map:=./src/my_bot/maps/my_map.yaml
+
+Launch nav2 navigation...
+
