@@ -1,0 +1,201 @@
+[global_config]
+[keybindings]
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+  [[ROS]]
+    background_darkness = 0.75
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    foreground_color = "#ffffff"
+    exit_action = hold
+[layouts]
+  [[default]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 0:27
+      maximised = True
+      fullscreen = False
+      size = 1920, 1136
+      title = ROS2 Foxy - Simulation Terminal
+      last_active_window = True
+    [[[child1]]]
+      type = Notebook
+      parent = child0
+      order = 0
+      labels = None, None
+      last_active_term = 56b760f5-9525-4fd5-b480-82c4ced13810, c2941f7d-e699-4e7a-aa86-7f107a68ab5f
+      active_page = 0
+    [[[child2]]]
+      type = VPaned
+      parent = child1
+      order = 0
+      position = 546
+      ratio = 0.5
+    [[[child3]]]
+      type = HPaned
+      parent = child2
+      order = 0
+      position = 643
+      ratio = 0.3361212754835337
+    [[[terminal4]]]
+      title = RVIZ2
+      type = Terminal
+      parent = child3
+      order = 0
+      profile = ROS
+      uuid = f46f2c48-2a8b-4fe9-a75d-bdb151590ff4
+      directory = /home/chrisstrnad/dev_ws
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && rviz2 -d src/my_bot/config/rviz.rviz && echo "4"; exec bash
+    [[[child5]]]
+      type = HPaned
+      parent = child3
+      order = 1
+      position = 630
+      ratio = 0.49645390070921985
+    [[[terminal6]]]
+      title = Gazebo
+      type = Terminal
+      parent = child5
+      order = 0
+      profile = ROS
+      uuid = 56b760f5-9525-4fd5-b480-82c4ced13810
+      directory = /home/chrisstrnad/dev_ws
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && ros2 launch my_bot launch_sim.launch.py world:=./src/my_bot/worlds/sim.world; exec bash
+    [[[terminal7]]]
+      title = Teleop Keyboard
+      type = Terminal
+      parent = child5
+      order = 1
+      profile = ROS
+      uuid = ba79bbbc-bf49-4019-a1b0-a36c7a3bc33f
+      directory = /home/chrisstrnad/dev_ws
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && ;ros2 run teleop_twist_keyboard teleop_twist_keyboard; exec bash
+    [[[child8]]]
+      type = HPaned
+      parent = child2
+      order = 1
+      position = 643
+      ratio = 0.3361212754835337
+    [[[terminal9]]]
+      title = Twist-Mux + Joystick
+      type = Terminal
+      parent = child8
+      order = 0
+      profile = ROS
+      uuid = d36c4a62-c481-4aa9-920e-3af9e7c4eb03
+      directory = /home/chrisstrnad/dev_ws
+      ; command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && ros2 run twist_mux twist_mux --ros-args --params-file ./src/my_bot/config/twist_mux.yaml -r cmd_vel_out:=diff_cont/cmd_vel_unstamped; exec bash
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && ros2 launch my_bot joystick.launch.py; exec bash
+    
+    [[[child10]]]
+      type = HPaned
+      parent = child8
+      order = 1
+      position = 630
+      ratio = 0.49645390070921985
+    [[[terminal11]]]
+      title = NAV2 Bringup Navigation
+      type = Terminal
+      parent = child10
+      order = 0
+      profile = ROS
+      uuid = 33820be6-0cd7-43f4-b280-5536e3e0dc3d
+      directory = /home/chrisstrnad/dev_ws
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && sleep 10 && ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true map_subscribe_transient_local:=true; exec bash
+    [[[terminal12]]]
+      title = NAV2 Bringup Localization
+      type = Terminal
+      parent = child10
+      order = 1
+      profile = ROS
+      uuid = 17b6d082-1cef-4e37-87a9-4acdad2bae03
+      directory = /home/chrisstrnad/dev_ws
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && sleep 15 && ros2 launch nav2_bringup localization_launch.py map:=./src/my_bot/maps/my_map.yaml; exec bash
+    [[[child13]]]
+      type = VPaned
+      parent = child1
+      order = 1
+      position = 546
+      ratio = 0.5
+    [[[child14]]]
+      type = HPaned
+      parent = child13
+      order = 0
+      position = 643
+      ratio = 0.3361212754835337
+    [[[terminal15]]]
+      title = Joystick Control
+      type = Terminal
+      parent = child14
+      order = 0
+      profile = ROS
+      uuid = 2e3543aa-4618-44c7-bf8c-530ee1aaf0c5
+      directory = /home/chrisstrnad/dev_ws
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && ros2 launch teleop_twist_joy teleop-launch.py joy_config:='atk3'; exec bash
+    [[[child16]]]
+      type = HPaned
+      parent = child14
+      order = 1
+      position = 630
+      ratio = 0.49645390070921985
+    [[[terminal17]]]
+      title = RQT TOPIC GUI
+      type = Terminal
+      parent = child16
+      order = 0
+      profile = ROS
+      uuid = ac70aa0a-1959-4d27-acea-6ba2f7b70cbb
+      directory = /home/chrisstrnad/dev_ws
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && ros2 run rqt_topic rqt_topic; exec bash
+    [[[terminal18]]]
+      title = ROS Bash
+      type = Terminal
+      parent = child16
+      order = 1
+      profile = ROS
+      uuid = a93976f0-143f-454c-8230-40deb4c35ff9
+      directory = /home/chrisstrnad/dev_ws
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash; exec bash
+    [[[child19]]]
+      type = HPaned
+      parent = child13
+      order = 1
+      position = 642
+      ratio = 0.3355985363303711
+    [[[terminal20]]]
+      title = ROS Bash
+      type = Terminal
+      parent = child19
+      order = 0
+      profile = ROS
+      uuid = 807ec85d-785d-457b-a440-44513d288833
+      directory = /home/chrisstrnad/dev_ws
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash; exec bash
+    [[[child21]]]
+      type = HPaned
+      parent = child19
+      order = 1
+      position = 631
+      ratio = 0.4968503937007874
+    [[[terminal22]]]
+      title = ROS Bash
+      type = Terminal
+      parent = child21
+      order = 0
+      profile = ROS
+      uuid = c2941f7d-e699-4e7a-aa86-7f107a68ab5f
+      directory = /home/chrisstrnad/dev_ws
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash; exec bash
+    [[[terminal23]]]
+      title = ROS Bash
+      type = Terminal
+      parent = child21
+      order = 1
+      profile = ROS
+      uuid = c920ea33-c562-4d57-8bef-9eded204bdf1
+      directory = /home/chrisstrnad/dev_ws
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash; exec bash
+[plugins]
