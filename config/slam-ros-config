@@ -73,6 +73,7 @@
       profile = ROS
       uuid = ba79bbbc-bf49-4019-a1b0-a36c7a3bc33f
       directory = /home/chrisstrnad/dev_ws
+      ; command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && ros2 run teleop_twist_keyboard teleop_twist_keyboard; exec bash
       command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash; exec bash
     [[[child8]]]
       type = HPaned
@@ -96,22 +97,23 @@
       position = 630
       ratio = 0.49645390070921985
     [[[terminal11]]]
-      title = ROS Bash
+      title = SLAM_TOOLBOX
       type = Terminal
       parent = child10
       order = 0
       profile = ROS
       uuid = 33820be6-0cd7-43f4-b280-5536e3e0dc3d
       directory = /home/chrisstrnad/dev_ws
-      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash; exec bash
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && sleep 10 && ros2 launch slam_toolbox online_async_launch.py params_file:=./src/my_bot/config/mapper_params_online_async.yaml use_sim_time:=true; exec bash
     [[[terminal12]]]
-      title = ROS Bash
+      title = NAV2 Bringup Localization
       type = Terminal
       parent = child10
       order = 1
       profile = ROS
       uuid = 17b6d082-1cef-4e37-87a9-4acdad2bae03
       directory = /home/chrisstrnad/dev_ws
+      ; command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && sleep 15 && ros2 launch nav2_bringup localization_launch.py map:=./src/my_bot/maps/my_map.yaml; exec bash
       command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash; exec bash
     [[[child13]]]
       type = VPaned
@@ -126,14 +128,14 @@
       position = 643
       ratio = 0.3361212754835337
     [[[terminal15]]]
-      title = ROS Bash
+      title = Joystick Control
       type = Terminal
       parent = child14
       order = 0
       profile = ROS
       uuid = 2e3543aa-4618-44c7-bf8c-530ee1aaf0c5
       directory = /home/chrisstrnad/dev_ws
-      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash; exec bash
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && sleep 20 && ros2 launch my_bot joystick.launch.py; exec bash
     [[[child16]]]
       type = HPaned
       parent = child14
@@ -141,14 +143,14 @@
       position = 630
       ratio = 0.49645390070921985
     [[[terminal17]]]
-      title = ROS Bash
+      title = RQT TOPIC GUI
       type = Terminal
       parent = child16
       order = 0
       profile = ROS
       uuid = ac70aa0a-1959-4d27-acea-6ba2f7b70cbb
       directory = /home/chrisstrnad/dev_ws
-      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash; exec bash
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && ros2 run rqt_topic rqt_topic; exec bash
     [[[terminal18]]]
       title = ROS Bash
       type = Terminal
