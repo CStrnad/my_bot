@@ -48,7 +48,7 @@
       profile = ROS
       uuid = f46f2c48-2a8b-4fe9-a75d-bdb151590ff4
       directory = /home/chrisstrnad/dev_ws
-      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && rviz2 -d src/my_bot/config/rviz.rviz && echo "4"; exec bash
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && rviz2 -d src/my_bot/config/rviz-amcl.rviz && echo "4"; exec bash
     [[[child5]]]
       type = HPaned
       parent = child3
@@ -151,14 +151,14 @@
       directory = /home/chrisstrnad/dev_ws
       command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && ros2 run rqt_topic rqt_topic; exec bash
     [[[terminal18]]]
-      title = ROS Bash
+      title = RQT Topic Visualization
       type = Terminal
       parent = child16
       order = 1
       profile = ROS
       uuid = a93976f0-143f-454c-8230-40deb4c35ff9
-      directory = /home/chrisstrnad/dev_ws
-      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash; exec bash
+      directory = /home/chrisstrnad/dev_wros2 run rqt_graph rqt_graphs
+      command = source /opt/ros/foxy/setup.bash && source install/local_setup.bash && ros2 run rqt_graph rqt_graph; exec bash
     [[[child19]]]
       type = HPaned
       parent = child13
