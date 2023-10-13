@@ -42,3 +42,12 @@ ENTRYPOINT ["bash", "/humble-entrypoint.sh"]
 
 
 # CMD ["bash"]
+
+# sudo apt install ros-humble-gazebo-ros-pkgs -y
+# sudo apt-get install ros-humble-rosbridge-server -y
+# sudo apt-get install ros-humble-slam-toolbox -y
+# sudo apt-get install ros-humble-navigation2 -y
+# sudo apt-get install ros-humble-nav2-bringup -y
+# sudo apt-get install ros-humble-twist-mux -y
+# sudo apt-get install ros-humble-xacro -y
+# sudo apt-get install ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-gazebo-ros2-control -y

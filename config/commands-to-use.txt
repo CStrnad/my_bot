@@ -1,0 +1,10 @@
+rviz2 -d src/my_bot/config/rviz-amcl.rviz
+ros2 launch my_bot launch_sim.launch.py world:=./src/my_bot/worlds/test2.world
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+ros2 launch my_bot joystick.launch.py
+sleep 10 && ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true map_subscribe_transient_local:=true
+sleep 15 && ros2 launch nav2_bringup localization_launch.py map:=./src/my_bot/maps/test2_map_save.yaml
+ros2 launch teleop_twist_joy teleop-launch.py joy_config:='atk3'
+ros2 run rqt_topic rqt_topic
+ros2 run rqt_graph rqt_graph
+ 
