@@ -4,11 +4,11 @@ twist_mux:
       navigation:
         topic   : cmd_vel
         timeout : 0.5
-        priority: 10
+        priority: 20
       ball-tracking:
         topic   : cmd_vel_ball_tracker
         timeout : 0.5
-        priority: 20
+        priority: 10
       keyboard:
         topic   : cmd_vel_keyboard
         timeout : 0.5

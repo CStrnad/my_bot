@@ -7,4 +7,10 @@ sleep 15 && ros2 launch nav2_bringup localization_launch.py map:=./src/my_bot/ma
 ros2 launch teleop_twist_joy teleop-launch.py joy_config:='atk3'
 ros2 run rqt_topic rqt_topic
 ros2 run rqt_graph rqt_graph
- 
+
+ros2 launch ball_tracker ball_tracker.launch.py params_file:=path/to/params.yaml image_topic:=/camera/image_raw cmd_vel_topic:=/cmd_vel_tracker enable_3d_tracker:=true
+ros2 launch ball_tracker ball_tracker.launch.py params_file:=src/my_bot/config/ball_tracker_params_sim.yaml image_topic:=/camera/image_raw cmd_vel_topic:=/cmd_vel_tracker enable_3d_tracker:=true
+
+Install missing ROS2 Packages:
+
+sudo apt-get install ros-humble-gazebo-ros-pkgs ros-humble-rosbridge-server ros-humble-slam-toolbox ros-humble-navigation2 ros-humble-nav2-bringup ros-humble-twist-mux ros-humble-xacro ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-gazebo-ros2-control -y 
